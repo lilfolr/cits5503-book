@@ -1,6 +1,5 @@
 # Summary
 
-* [First Chapter](chapter1.md)
-
-
-
+* [Setting up Boto](Part1.md)
+* [EC2 Security Groups](Part2.md)
+* [IAM Roles](Part3.md)

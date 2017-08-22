@@ -1,6 +1,9 @@
-# CITS5503 - Lab 3
+# CITS5503 - Lab 5 - Boto & Security
 
-## Security & Boto
-
-
-
+## Topics Covered in this Lab
+- Python boto API
+- AWS security
+  - EC2 Secuirty Groups
+  - AWS
+  - IAM Roles
+- DynamoDB
