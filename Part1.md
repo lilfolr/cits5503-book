@@ -8,7 +8,6 @@ For either choice, you can find a guide [here](https://www.digitalocean.com/comm
 
 Verify the installation was successful by running the `python3` and `pip3` command:
 
-{% filename %}command-line{% endfilename %}
 ```
 $ python3 --version
 Python 3.5.1
