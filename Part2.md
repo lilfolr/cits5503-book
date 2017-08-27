@@ -64,7 +64,7 @@ We want to allow traffic from port 8080.
 {'ResponseMetadata': {'RequestId': 'some-id', 'HTTPStatusCode': 200, 'HTTPHeaders': {'content-type': 'text/xml;charset=UTF-8', 'transfer-encoding': 'chunked', 'vary': 'Accept-Encoding', 'date': 'some date GMT', 'server': 'AmazonEC2'}, 'RetryAttempts': 0}}
 ```
 
-Now run ** and take a screenshot for submission** the following:
+Now run** and take a screenshot for submission** the following:
 
 ```py
 >>> [x.ip_permissions for x in vpc.security_groups.filter(GroupNames=['21301438_SG'])]
