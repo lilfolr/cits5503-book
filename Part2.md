@@ -159,8 +159,10 @@ You should now get a response. **Take a screenshot of this**
 
 Log on to AWS and terminate your EC2 instance
 
-Then go to the security groups page, and delete your group.   
+Then go to the security groups page, and delete your group.  
 Note, you will need to wait for you instance to terminate before deleting the group
+
+If you're up for a challenge, try use boto to delete your resources :\)
 
 [^1]: Note: If you have multiple aws profiles, set your uwa one as the default one for this lab \[in `~/.aws/credentials`\]
 
