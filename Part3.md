@@ -110,8 +110,10 @@ Delete the lambda function \[Click actions -&gt; delete function\]
 
 Delete the DynamoDB:
 
-* Go to https://ap-southeast-2.console.aws.amazon.com/dynamodb/home?region=ap-southeast-2\#tables:
+* Go to [https://ap-southeast-2.console.aws.amazon.com/dynamodb/home?region=ap-southeast-2\#tables](https://ap-southeast-2.console.aws.amazon.com/dynamodb/home?region=ap-southeast-2#tables):
 * Click your table -&gt; Actions -&gt; Delete Table
+
+#### [Next: Conclusion](/conclusion.md)
 
 
 

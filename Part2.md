@@ -164,6 +164,8 @@ Note, you will need to wait for you instance to terminate before deleting the gr
 
 If you're up for a challenge, try use boto to delete your resources :\)
 
+#### [Next: IAM Roles](/Part3.md)
+
 [^1]: Note: If you have multiple aws profiles, set your uwa one as the default one for this lab \[in `~/.aws/credentials`\]
 
 [^2]: An empty security group will block all incoming traffic, and allow all outgoing traffic
