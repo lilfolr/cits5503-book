@@ -8,7 +8,7 @@ Open the python interpreter \(after activating your virtualenv from the [previou
 (env)  $ python
 ```
 
-Not run the following[^1]:
+Now run the following[^1]:
 
 ```py
 >>> import boto3
