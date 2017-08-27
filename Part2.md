@@ -122,7 +122,7 @@ nc: connectx to ec2-52-62-225-49.ap-southeast-2.compute.amazonaws.com port 8080 
 ```
 
 The netcat \[nc\] script tries to connect to to given port. `-v` is for verbose output. `-G` is a timeout.  
-We can see that port 80 is closed, as nc never connects, but port 8080 is open.   
+We can see that port 80 is closed, as nc never connects, but port 8080 is open.  
 As we have no webserver listening to the port, the connection is refused.
 
 **Screenshot the ping & netcat above**
@@ -154,6 +154,13 @@ PING ec2-52-62-225-49.ap-southeast-2.compute.amazonaws.com (52.62.225.49): 56 da
 ```
 
 You should now get a response. **Take a screenshot of this**
+
+## Cleaning up
+
+Log on to AWS and terminate your EC2 instance
+
+Then go to the security groups page, and delete your group.   
+Note, you will need to wait for you instance to terminate before deleting the group
 
 [^1]: Note: If you have multiple aws profiles, set your uwa one as the default one for this lab \[in `~/.aws/credentials`\]
 
