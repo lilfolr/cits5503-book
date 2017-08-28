@@ -4,7 +4,8 @@ You will need python to use the boto API. We will be using python3, and boto3
 
 ## Installing python3 & pip3
 
-You can either install python and pip on your computer, or ssh into an EC2 instance.  
+You can either install python and pip on your computer, or ssh into a new EC2 instance \[see Lab 1\].  
+If you use your own PC, and it's not ubuntu, some of the commands below will need to be modified.  
 For either choice, you can find a guide [here](https://www.digitalocean.com/community/tutorial_series/how-to-install-and-set-up-a-local-programming-environment-for-python-3).[^1]
 
 Verify the installation was successful by running the `python3` and `pip3` command:
@@ -33,13 +34,13 @@ Showing you're in the virtual environment
 
 ## Create AWS Access Key
 
-1. Log on to AWS and go to the IAM app \[https://console.aws.amazon.com/iam/home?region=ap-southeast-2\#/users\]
+1. Log on to AWS and go to the IAM app \[[https://console.aws.amazon.com/iam/home?region=ap-southeast-2\#/users\](https://console.aws.amazon.com/iam/home?region=ap-southeast-2#/users\)\]
 2. Click the Users tab and search for your student number
 3. Click your student number and go to the Security Credentials Tab
 4. Click the Create access key button.
 5. Download the csv.
 
-**NOTE: These credentials allow full access to your AWS account. They are equivalent to having your username and password   
+**NOTE: These credentials allow full access to your AWS account. They are equivalent to having your username and password  
 DO NOT:**
 
 * Upload them to ANY website
@@ -59,5 +60,5 @@ DO NOT:**
 
 [^2]: There are automated scripts that look on github for AWS credentials accidentally uploaded.
 
-[^3]: Remember, if you commit your keys to git deleting them won't help. You will need to delete the repository or use something like https://github.com/IBM/BluePic/wiki/Using-BFG-Repo-Cleaner-tool-to-remove-sensitive-files-from-your-git-repo 
+[^3]: Remember, if you commit your keys to git deleting them won't help. You will need to delete the repository or use something like [https://github.com/IBM/BluePic/wiki/Using-BFG-Repo-Cleaner-tool-to-remove-sensitive-files-from-your-git-repo](https://github.com/IBM/BluePic/wiki/Using-BFG-Repo-Cleaner-tool-to-remove-sensitive-files-from-your-git-repo) 
 
