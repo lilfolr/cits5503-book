@@ -2,7 +2,7 @@
 
 In this part we are going to look at IAM rules. IAM controls how AWS services can interface with each other, by use of IAM rules.
 
-We are going to create a simple database, and a lambda function that attempts to write to it.
+We are going to create a simple database, and a Lambda function that attempts to write to it.
 
 ## Setting up DynamoDB
 
@@ -31,11 +31,11 @@ Wait for it to be ACTIVE before continuing.
 'ACTIVE'
 ```
 
-**Take a screenshot of the above command**
+**Take a screenshot of the above command for the submission.**
 
 ## Setting up Lambda
 
-Lambda functions allow you to run small pieces of code in aws, generally in response to some event.  
+Lambda functions allow you to run small pieces of code in AWS, generally in response to some event.  
 In our case, we are going to add data to our dynamodb table.
 
 ### Creating a Lambda Function
@@ -57,7 +57,7 @@ Add the following in the Configure Function page:
 | Description | blank |  |
 | Runtime | Python3.6 | Python3.6 |
 | Code | Leave as is |  |
-| Handler | leave as is | lambda\_function.lambda\_handler |
+| Handler | Leave as is | lambda\_function.lambda\_handler |
 | Role | Chose an existing role |  |
 | Existing Role | lambda\_basic\_execution |  |
 
@@ -82,13 +82,13 @@ def lambda_handler(event, context):
 Click Save and Test  
 Ignore the Input test event dialog and click Save and test again.
 
-You should see an error. Click 'Details' and **take a screenshot**. It should look like so \(but with your student number\):![](/assets/lambda_error.png)This error is because lambda does not have IAM access to dynamodb.  
+You should see an error. Click 'Details' and **take a screenshot for the submission**. It should look like so \(but with your student number\):![](/assets/lambda_error.png)This error is because Lambda does not have IAM access to dynamodb.  
 We can fix this by changing the execution roles:
 
 Click the Configuration tab change Existing role to `lambda_dynamodbFull_role`
 
-This role gives your lambda full access to dynamodb  
-click save and test. You should get a green tick now.
+This role gives your Lambda full access to dynamodb  
+Click save and test. You should get a green tick now.
 
 ### Get our inserted value
 
@@ -102,11 +102,11 @@ Go back to your python interpreter:
 {'Items': [{'my_key': 'Hello your date'}], 'Count': 1, 'ScannedCount': 1, 'ResponseMetadata': {'RequestId': 'some id', 'HTTPStatusCode': 200, 'HTTPHeaders': {'server': 'Server', 'date': 'some date GMT', 'content-type': 'application/x-amz-json-1.0', 'content-length': '89', 'connection': 'keep-alive', 'x-amzn-requestid': 'some key', 'x-amz-crc32': '800716666'}, 'RetryAttempts': 0}}
 ```
 
-**Take a screenshot of the above**
+**Take a screenshot of the above for the submission.**
 
 ## Cleanup:
 
-Delete the lambda function \[Click actions -&gt; delete function\]
+Delete the Lambda function \[Click actions -&gt; delete function\]
 
 Delete the DynamoDB:
 

@@ -2,7 +2,7 @@
 
 ## Getting Started & Checking boto3 is installed
 
-Open the python interpreter \(after activating your virtualenv from the [previous](/Part1.md) part.
+Open the python interpreter \(after activating your virtualenv from the [previous](/Part1.md) part\).
 
 ```
 (env)  $ python
@@ -16,18 +16,18 @@ Now run the following[^1]:
 >>> [bucket.name for bucket in s3.buckets.all()]
 ```
 
-If setup correctly, you should see a list of the s3 buckets in our aws account.
+If setup correctly, you should see a list of the S3 buckets in our AWS account.
 
 ## Security groups
 
-A security group acts like a firewall for your ec2 instance, allowing certain packets through \[eg, 80 & 443 for http & https\], and blocking others \[3306 for MySQL\].
+A security group acts like a firewall for your EC2 instance, allowing certain packets through \[e.g. 80 & 443 for HTTP & HTTPS\], and blocking others \[3306 for MySQL\].
 
 On the AWS console you can view security groups by going to the EC2 page, and clicking 'Security Groups' on the left bar.  
 Or just click [here](https://ap-southeast-2.console.aws.amazon.com/ec2/v2/home?region=ap-southeast-2#SecurityGroups:sort=groupName) :\)
 
 ### Creating a Security Group
 
-We are going to create a simple security group that only allows http \[80\] traffic.  
+We are going to create a simple security group that only allows HTTP \[80\] traffic.  
 Open the python interpreter and type the following:
 
 ```py
@@ -41,14 +41,14 @@ Open the python interpreter and type the following:
 
 Note: `vpc-66e03803` is our default VPC ID, and can be found from [here](https://ap-southeast-2.console.aws.amazon.com/vpc/home?region=ap-southeast-2#vpcs:)
 
-If you now run
+If you now run:
 
 ```py
 >>> [x for x in vpc.security_groups.filter(GroupNames=['21301438_SG'])]
 [ec2.SecurityGroup(id='sg-1234567')]
 ```
 
-You should get 1 result. **Take note of the security group id.**
+You should get one result. **Take note of the security group id.**
 
 ### Modify Security Group
 
@@ -56,7 +56,7 @@ We now have an empty security group[^2], so lets give it some rules.
 We want to allow traffic from port 8080.
 
 ```py
->>> security_group = ec2.SecurityGroup('sg-1234567')  # Use you security group id here
+>>> security_group = ec2.SecurityGroup('sg-1234567')  # Use your security group id here
 >>> security_group.authorize_ingress(
     CidrIp='0.0.0.0/0',
     FromPort=8080, ToPort=8080,
@@ -73,17 +73,17 @@ Now run** and take a screenshot for submission** the following:
 
 Here's a description of the paramaters for the authorize\_ingress command we just ran:
 
-`CidrIp`: The range of IP addresses this rule applies to. any range with a `/0` at the end will allow all ip addresses. Google ip masks for more info  
-`FromPort`&`ToPort`: The port range we're allowing. In this case it's just 1 port.  
-`IpProtocol`: The protocol the rule applies to. This is either `tcp`; `udp` or `icmp`. Obviously if you pick ICMP you can't specify a port range, as ICMP is a layer 3 network protocol. That being said, you may need to specify one anyway to keep AWS happy.
+`CidrIp`: The range of IP addresses this rule applies to. any range with a `/0` at the end will allow all IP addresses. Google IP masks for more information.  
+`FromPort`&`ToPort`: The port range we're allowing. In this case it's just one port.  
+`IpProtocol`: The protocol the rule applies to. This is either `tcp`; `udp` or `icmp`. If you pick ICMP you can't specify a port range, as ICMP is a layer 3 network protocol. That being said, you may need to specify one anyway to keep AWS happy.
 
 ### Assign Security Group
 
-We will now assign this security group to an ec2 instance.  
+We will now assign this security group to an EC2 instance.  
 First, create an EC2 instance \[see lab 2 on how to do this\].  
 Note that by default an EC2 gets assigned a Security Group allowing port 80; 22 and 443.
 
-Lookup your instance ID in aws. It should be something  like `i-0e5129ea3ee1a6982`
+Lookup your instance ID in AWS. It should be something  like `i-0e5129ea3ee1a6982`
 
 Now we are going to attach the security group to our instance \[and detach the default ones\]
 
@@ -125,7 +125,7 @@ The netcat \[nc\] script tries to connect to to given port. `-v` is for verbose 
 We can see that port 80 is closed, as nc never connects, but port 8080 is open.  
 As we have no webserver listening to the port, the connection is refused.
 
-**Screenshot the ping & netcat above**
+**Screenshot the ping & netcat above for the submission.**
 
 ## Change security group
 
@@ -153,14 +153,14 @@ PING ec2-52-62-225-49.ap-southeast-2.compute.amazonaws.com (52.62.225.49): 56 da
 64 bytes from 52.62.225.49: icmp_seq=1 ttl=49 time=66.349 ms
 ```
 
-You should now get a response. **Take a screenshot of this**
+You should now get a response. **Take a screenshot of this for the submission.**
 
 ## Cleaning up
 
 Log on to AWS and terminate your EC2 instance
 
 Then go to the security groups page, and delete your group.  
-Note, you will need to wait for you instance to terminate before deleting the group
+Note: you will need to wait for you instance to terminate before deleting the group
 
 If you're up for a challenge, try use boto to delete your resources :\)
 

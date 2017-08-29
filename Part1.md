@@ -1,12 +1,14 @@
 # Part 1 - Setting up boto
 
-You will need python to use the boto API. We will be using python3, and boto3
+You will need python to use the boto API. We will be using python3, and boto3.
 
 ## Installing python3 & pip3
 
-You can either install python and pip on your computer, or ssh into a new EC2 instance \[see Lab 1\].  
-If you use your own PC, and it's not ubuntu, some of the commands below will need to be modified.  
-For either choice, you can find a guide [here](https://www.digitalocean.com/community/tutorial_series/how-to-install-and-set-up-a-local-programming-environment-for-python-3).[^1]
+We'll be using a new EC2 instance, similar to that set up in Lab 1. 
+
+Follow the Lab 1 instructions to set up the new instance - noting that you can re-use your security group and key pair.
+
+Once you have accessed your instance via ssh, type `sudo apt-get update` then install by following the guide [here](https://www.digitalocean.com/community/tutorials/how-to-install-python-3-and-set-up-a-local-programming-environment-on-ubuntu-16-04).
 
 Verify the installation was successful by running the `python3` and `pip3` command:
 
@@ -20,7 +22,6 @@ pip 8.1.1
 
 ## Create a virtual environment
 
-Skip this step if you covered in the previous one.  
 1. Type `pip3 install virtualenv`  
 2. Then `virtualenv env -p python3`  
 3. Finally `. env/bin/activate`. _Remember the dot at the front!_
@@ -29,8 +30,8 @@ Skip this step if you covered in the previous one.
 
 Your prompt should look something like this now:  
 `(env) ubuntu@ip-172-1-1-1:~$`  
-Showing you're in the virtual environment  
-1. Type `pip install boto3`
+This shows that you are in the virtual environment  
+Next, type `pip install boto3`
 
 ## Create AWS Access Key
 
@@ -56,7 +57,7 @@ DO NOT:**
 
 #### [Next: EC2 Security Groups](/Part2.md)
 
-[^1]: Remember to `sudo apt-get update` if on an EC2 before installing.
+
 
 [^2]: There are automated scripts that look on github for AWS credentials accidentally uploaded.
 
