@@ -1,5 +1,8 @@
 # CITS5503 - Lab 5 - Boto & Security
 
+If you get stuck, feel free to ask questions here:
+[![Join the chat at https://gitter.im/cits5503-lab5/Lobby](https://badges.gitter.im/cits5503-lab5/Lobby.svg)](https://gitter.im/cits5503-lab5/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 ## Topics Covered in this Lab
 
 * Python boto API
