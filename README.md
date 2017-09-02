@@ -7,8 +7,7 @@ If you get stuck, feel free to ask questions here:
 
 * Python boto API
 * AWS security
-  * EC2 Secuirty Groups
-  * AWS
+  * EC2 Security Groups
   * IAM Roles
 * DynamoDB
 

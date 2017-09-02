@@ -2,7 +2,7 @@
 
 In this part we are going to look at IAM rules. IAM controls how AWS services can interface with each other, by use of IAM rules.
 
-We are going to create a simple database, and a lambda function that attempts to write to it.
+We are going to create a simple database, and a Lambda function that attempts to write to it.
 
 ## Setting up DynamoDB
 
@@ -27,29 +27,27 @@ It may take some time to create the table. You can check is status either on [AW
 Wait for it to be ACTIVE before continuing.
 
 ```
->>> client.describe_table(TableName='21301438_ddb_tbl')['Table']['TableStatus']
+>>> client.describe_table(TableName='21301438_ddb_tbl')['Table']['TableStatus'] # Use your student number
 'ACTIVE'
 ```
 
-**Take a screenshot of the above command**
+**Take a screenshot of the above command for the submission.**
 
 ## Setting up Lambda
 
-Lambda functions allow you to run small pieces of code in aws, generally in response to some event.  
+Lambda functions allow you to run small pieces of code in AWS, generally in response to some event.  
 In our case, we are going to add data to our dynamodb table.
 
 ### Creating a Lambda Function
 
-We are going to create the lambda function from in AWS, as it's quicker and easier than boto.  
+We are going to create the lambda function in AWS, as it's quicker and easier than boto.  
 Note, however, that all these steps could be done from boto.
 
-Go to the lambda section in aws - [https://ap-southeast-2.console.aws.amazon.com/lambda/home?region=ap-southeast-2\#/functions](https://ap-southeast-2.console.aws.amazon.com/lambda/home?region=ap-southeast-2#/functions)
+1. Go to the lambda section in AWS: [https://ap-southeast-2.console.aws.amazon.com/lambda/home?region=ap-southeast-2\#/functions](https://ap-southeast-2.console.aws.amazon.com/lambda/home?region=ap-southeast-2#/functions)
+2. Click _Create Function_ then _Author from Scratch_
+3. In _Configure Triggers_, just click _Next_
 
-Click 'Create Function' --&gt; 'Author from Scratch'
-
-In Configure Triggers, just click next
-
-Add the following in the Configure Function page:
+Add the following in the _Configure Function_ page:
 
 | Field | Value | Example |
 | :--- | :--- | :--- |
@@ -57,17 +55,17 @@ Add the following in the Configure Function page:
 | Description | blank |  |
 | Runtime | Python3.6 | Python3.6 |
 | Code | Leave as is |  |
-| Handler | leave as is | lambda\_function.lambda\_handler |
+| Handler | Leave as is | lambda\_function.lambda\_handler |
 | Role | Chose an existing role |  |
 | Existing Role | lambda\_dynamoDBFull\_role |  |
 
-Click next and create function
+Click _Next_ and _Create function_.
 
 ### Running our lambda function
 
 You should now see a page with a dialog to edit the code of your function:![](/assets/lambda_start.png)
 
-Type the following into the above box to tell the lambda to access and write to your dynamo table:
+Type the following into the above box to tell the Lambda function to access and write to your dynamo table. Remember to insert your student number in the table name:
 
 ```py
 import boto3
@@ -75,14 +73,14 @@ from datetime import datetime
 
 def lambda_handler(event, context):
     client = boto3.client('dynamodb')
-    client.put_item(TableName='21301438_ddb_tbl', Item={'my_key':{'S':"Hello "+str(datetime.now())}})
+    client.put_item(TableName='yourstudentnumber_ddb_tbl', Item={'my_key':{'S':"Hello "+str(datetime.now())}})
     return
 ```
 
-Click Save and Test  
-Ignore the Input test event dialog and click Save and test again.
+Click _Save and test_  
+Ignore the _Input test event_ dialog and click _Save and test_ again. You should get a green tick.
 
-This role gives your lambda full access to dynamodb.
+This role gives your Lambda function full access to dynamodb.
 
 ### Get our inserted value
 
@@ -93,19 +91,17 @@ Go back to your python interpreter:
 >>> dynamodb = boto3.resource('dynamodb')
 >>> table = dynamodb.Table('yourstudentnumber_ddb_tbl')
 >>> table.scan()
-{'Items': [{'my_key': 'Hello your date'}], 'Count': 1, 'ScannedCount': 1, 'ResponseMetadata': {'RequestId': 'some id', 'HTTPStatusCode': 200, 'HTTPHeaders': {'server': 'Server', 'date': 'some date GMT', 'content-type': 'application/x-amz-json-1.0', 'content-length': '89', 'connection': 'keep-alive', 'x-amzn-requestid': 'some key', 'x-amz-crc32': '800716666'}, 'RetryAttempts': 0}}
 ```
 
-**Take a screenshot of the above**
+**Take a screenshot of the results of the above for the submission.**
 
 ## Cleanup:
 
-Delete the lambda function \[Click actions -&gt; delete function\]
-
-Delete the DynamoDB:
-
-* Go to [https://ap-southeast-2.console.aws.amazon.com/dynamodb/home?region=ap-southeast-2\#tables](https://ap-southeast-2.console.aws.amazon.com/dynamodb/home?region=ap-southeast-2#tables):
-* Click your table -&gt; Actions -&gt; Delete Table
+1. **Delete the Lambda function **- click _Actions _-&gt; _Delete function_
+2. **Delete the DynamoDB **- go to [https://ap-southeast-2.console.aws.amazon.com/dynamodb/home?region=ap-southeast-2\#tables](https://ap-southeast-2.console.aws.amazon.com/dynamodb/home?region=ap-southeast-2#tables)
+3. Click \_Tables \_from the list on the left, and select your table
+4. Click _Actions_ then _Delete table_
+5. **Terminate your EC2 instance**_** **_**- **go to [https://ap-southeast-2.console.aws.amazon.com/ec2/v2/home?region=ap-southeast-2\#Instances](https://ap-southeast-2.console.aws.amazon.com/ec2/v2/home?region=ap-southeast-2#Instances), select your instance and click _Actions_ -&gt; _Instance State -&gt; Terminate_
 
 #### [Next: Conclusion](/conclusion.md)
 
