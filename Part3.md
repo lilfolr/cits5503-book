@@ -27,7 +27,7 @@ It may take some time to create the table. You can check is status either on [AW
 Wait for it to be ACTIVE before continuing.
 
 ```
->>> client.describe_table(TableName='leighton_ddb_tbl')['Table']['TableStatus']
+>>> client.describe_table(TableName='21301438_ddb_tbl')['Table']['TableStatus']
 'ACTIVE'
 ```
 
@@ -75,7 +75,7 @@ from datetime import datetime
 
 def lambda_handler(event, context):
     client = boto3.client('dynamodb')
-    client.put_item(TableName='yourstudentnumber_ddb_tbl', Item={'my_key':{'S':"Hello "+str(datetime.now())}})
+    client.put_item(TableName='21301438_ddb_tbl', Item={'my_key':{'S':"Hello "+str(datetime.now())}})
     return
 ```
 
