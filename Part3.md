@@ -27,7 +27,7 @@ It may take some time to create the table. You can check is status either on [AW
 Wait for it to be ACTIVE before continuing.
 
 ```
->>> client.describe_table(TableName='leighton_ddb_tbl')['Table']['TableStatus']
+>>> client.describe_table(TableName='21301438_ddb_tbl')['Table']['TableStatus'] # Use your student number
 'ACTIVE'
 ```
 
@@ -40,16 +40,14 @@ In our case, we are going to add data to our dynamodb table.
 
 ### Creating a Lambda Function
 
-We are going to create the lambda function from in AWS, as it's quicker and easier than boto.  
+We are going to create the lambda function in AWS, as it's quicker and easier than boto.  
 Note, however, that all these steps could be done from boto.
 
-Go to the lambda section in aws - [https://ap-southeast-2.console.aws.amazon.com/lambda/home?region=ap-southeast-2\#/functions](https://ap-southeast-2.console.aws.amazon.com/lambda/home?region=ap-southeast-2#/functions)
+1. Go to the lambda section in AWS: [https://ap-southeast-2.console.aws.amazon.com/lambda/home?region=ap-southeast-2\#/functions](https://ap-southeast-2.console.aws.amazon.com/lambda/home?region=ap-southeast-2#/functions)
+2. Click _Create Function_ then _Author from Scratch_
+3. In _Configure Triggers_, just click _Next_
 
-Click 'Create Function' --&gt; 'Author from Scratch'
-
-In Configure Triggers, just click next
-
-Add the following in the Configure Function page:
+Add the following in the _Configure Function_ page:
 
 | Field | Value | Example |
 | :--- | :--- | :--- |
@@ -61,7 +59,7 @@ Add the following in the Configure Function page:
 | Role | Chose an existing role |  |
 | Existing Role | lambda\_basic\_execution |  |
 
-Click next and create function
+Click _Next_ and _Create function_.
 
 ### Running our lambda function
 
@@ -79,15 +77,15 @@ def lambda_handler(event, context):
     return
 ```
 
-Click Save and Test  
-Ignore the Input test event dialog and click Save and test again.
+Click _Save and test  
+_Ignore the _Input test event _dialog and click _Save and test _again.
 
 You should see an error. Click 'Details' and **take a screenshot for the submission**. It should look like so \(but with your student number\):![](/assets/lambda_error.png)This error is because Lambda does not have IAM access to dynamodb.  
 We can fix this by changing the execution roles:
 
-Click the Configuration tab change Existing role to `lambda_dynamodbFull_role`
+Click the _Configuration _tab, _Change Existing Role_ to `lambda_dynamodbFull_role`
 
-This role gives your Lambda full access to dynamodb  
+This role gives your Lambda full access to dynamodb.  
 Click save and test. You should get a green tick now.
 
 ### Get our inserted value
@@ -99,19 +97,21 @@ Go back to your python interpreter:
 >>> dynamodb = boto3.resource('dynamodb')
 >>> table = dynamodb.Table('yourstudentnumber_ddb_tbl')
 >>> table.scan()
-{'Items': [{'my_key': 'Hello your date'}], 'Count': 1, 'ScannedCount': 1, 'ResponseMetadata': {'RequestId': 'some id', 'HTTPStatusCode': 200, 'HTTPHeaders': {'server': 'Server', 'date': 'some date GMT', 'content-type': 'application/x-amz-json-1.0', 'content-length': '89', 'connection': 'keep-alive', 'x-amzn-requestid': 'some key', 'x-amz-crc32': '800716666'}, 'RetryAttempts': 0}}
 ```
 
-**Take a screenshot of the above for the submission.**
+**Take a screenshot of the results of the above for the submission.**
 
 ## Cleanup:
 
-Delete the Lambda function \[Click actions -&gt; delete function\]
+1. **Delete the Lambda function **- click _Actions _-&gt; _Delete function_
+2. **Delete the DynamoDB **- go to [https://ap-southeast-2.console.aws.amazon.com/dynamodb/home?region=ap-southeast-2\#tables](https://ap-southeast-2.console.aws.amazon.com/dynamodb/home?region=ap-southeast-2#tables)
+3. Click _Tables _from the list on the left, and select your table
+4. Click _Actions_ then _Delete table_
+5. **Terminate your EC2 instance**_** **_**- **go to [https://ap-southeast-2.console.aws.amazon.com/ec2/v2/home?region=ap-southeast-2\#Instances](https://ap-southeast-2.console.aws.amazon.com/ec2/v2/home?region=ap-southeast-2#Instances), select your instance and click _Actions_ -&gt; _Instance State -&gt; Terminate_
 
-Delete the DynamoDB:
+ 
 
-* Go to [https://ap-southeast-2.console.aws.amazon.com/dynamodb/home?region=ap-southeast-2\#tables](https://ap-southeast-2.console.aws.amazon.com/dynamodb/home?region=ap-southeast-2#tables):
-* Click your table -&gt; Actions -&gt; Delete Table
+
 
 #### [Next: Conclusion](/conclusion.md)
 

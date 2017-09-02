@@ -5,7 +5,6 @@
 * Python boto API
 * AWS security
   * EC2 Secuirty Groups
-  * AWS
   * IAM Roles
 * DynamoDB
 
