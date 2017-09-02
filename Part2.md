@@ -122,9 +122,9 @@ nc: connectx to ec2-52-62-225-49.ap-southeast-2.compute.amazonaws.com port 8080 
 ```
 
 The netcat \[nc\] script tries to connect to to given port. `-v` is for verbose output. `-G` is a timeout.  
-If you get the following error:  
-`'nc: invalid option -- 'G'.  
-`Use `-w` instead of `-G`
+**If you get the following error:**  
+`'nc: invalid option -- 'G'`**  
+Use** `-w` **instead of** `-G`
 
 We can see that port 80 is closed, as nc never connects, but port 8080 is open.  
 As we have no webserver listening to the port, the connection is refused.
