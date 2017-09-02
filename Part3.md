@@ -77,16 +77,16 @@ def lambda_handler(event, context):
     return
 ```
 
-Click _Save and test  
-_Ignore the _Input test event _dialog and click _Save and test _again.
+Click \_Save and test  
+\_Ignore the \_Input test event \_dialog and click \_Save and test \_again.
 
 You should see an error. Click 'Details' and **take a screenshot for the submission**. It should look like so \(but with your student number\):![](/assets/lambda_error.png)This error is because Lambda does not have IAM access to dynamodb.  
 We can fix this by changing the execution roles:
 
-Click the _Configuration _tab, _Change Existing Role_ to `lambda_dynamodbFull_role`
+Click the _Configuration _tab,_ Change Existing Role_ to _lambda\_dynamodbFull\_role_
 
 This role gives your Lambda full access to dynamodb.  
-Click save and test. You should get a green tick now.
+Click _Save and test_. You should get a green tick now.
 
 ### Get our inserted value
 
@@ -105,13 +105,9 @@ Go back to your python interpreter:
 
 1. **Delete the Lambda function **- click _Actions _-&gt; _Delete function_
 2. **Delete the DynamoDB **- go to [https://ap-southeast-2.console.aws.amazon.com/dynamodb/home?region=ap-southeast-2\#tables](https://ap-southeast-2.console.aws.amazon.com/dynamodb/home?region=ap-southeast-2#tables)
-3. Click _Tables _from the list on the left, and select your table
+3. Click \_Tables \_from the list on the left, and select your table
 4. Click _Actions_ then _Delete table_
 5. **Terminate your EC2 instance**_** **_**- **go to [https://ap-southeast-2.console.aws.amazon.com/ec2/v2/home?region=ap-southeast-2\#Instances](https://ap-southeast-2.console.aws.amazon.com/ec2/v2/home?region=ap-southeast-2#Instances), select your instance and click _Actions_ -&gt; _Instance State -&gt; Terminate_
-
- 
-
-
 
 #### [Next: Conclusion](/conclusion.md)
 
