@@ -59,7 +59,7 @@ Add the following in the Configure Function page:
 | Code | Leave as is |  |
 | Handler | leave as is | lambda\_function.lambda\_handler |
 | Role | Chose an existing role |  |
-| Existing Role | lambda\_basic\_execution |  |
+| Existing Role | lambda\_dynamoDBFull\_role |  |
 
 Click next and create function
 
@@ -82,13 +82,7 @@ def lambda_handler(event, context):
 Click Save and Test  
 Ignore the Input test event dialog and click Save and test again.
 
-You should see an error. Click 'Details' and **take a screenshot**. It should look like so \(but with your student number\):![](/assets/lambda_error.png)This error is because lambda does not have IAM access to dynamodb.  
-We can fix this by changing the execution roles:
-
-Click the Configuration tab change Existing role to `lambda_dynamodbFull_role`
-
-This role gives your lambda full access to dynamodb  
-click save and test. You should get a green tick now.
+This role gives your lambda full access to dynamodb.
 
 ### Get our inserted value
 
