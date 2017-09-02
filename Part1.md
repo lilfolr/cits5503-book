@@ -12,7 +12,7 @@ We'll be using a new EC2 instance, similar to that set up in Lab 1. The steps ar
 4. Click on Instances then Launch Instance
 5. Select _Ubuntu Server 16.04 LTS \(HVM\), SSD Volume Type - ami-e2021d81_ as the OS type
 6. Select _General Purpose t2.micro_ as the instance type
-7. Click _Review and Launch, _then _Edit security groups_
+7. Click _Review and Launch _then _Edit security groups_
 8. Click _Select an existing security group_. Here you should be able to find your security group from Lab 1.
 9. Click _Review and Launch, _then _Launch_
 10. Select _Choose an existing key pair_ and find your student number in the list, then tick the acknowledgement box. 
