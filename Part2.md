@@ -77,7 +77,7 @@ Here's a description of the paramaters for the authorize\_ingress command we jus
 ### Assign Security Group
 
 We will now assign this security group to a new EC2 instance.  
-First, create another EC2 instance \(see instructions at the start of this lab, or back in Lab 1, if required\).
+First, create another EC2 instance \(see instructions at the start of this lab, or back in Lab 1, if required\).  
 Note that by default an EC2 instance gets assigned a security group allowing port 80; 22 and 443.
 
 Take note of your instance ID in AWS. It should be something like _i-0e5129ea3ee1a6982._
@@ -94,7 +94,6 @@ Now we are going to attach the security group to our instance, and detach the de
 
 Note: you will now be unable to ssh into this instance \[as we have blocked port 22\]
 
-
 #### Showing port 8080 is open
 
 On AWS, take not of the public DNS \(IPv4\) of your new instance:![](/assets/DNS.png)
@@ -108,6 +107,8 @@ Request timeout for icmp_seq 0
 Request timeout for icmp_seq 1
 ```
 
+**You may need to type `ping -w 3 ec2-`... if you're not getting an output.  
+This will show the packets lost.**  
 It should timeout, as we have blocked ICMP \[push ctrl+c to stop pinging\].
 
 Now try the following:
